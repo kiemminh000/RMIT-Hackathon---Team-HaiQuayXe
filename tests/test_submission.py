@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.validate_submission import validate_submission
+from haiquayxe.submission import validate_submission
 
 
 class SubmissionTests(unittest.TestCase):
@@ -61,7 +61,7 @@ class SubmissionTests(unittest.TestCase):
                     validate_submission(self.sample, candidate)
 
     def test_invalid_probabilities(self):
-        for value in ("nan", "inf", "-inf", "", "jailbreak", "-0.01", "1.01"):
+        for value in ("nan", "inf", "-inf", "", "jailbreak", "-0.01", "1.01", "0_1", "1e999"):
             with self.subTest(value=value):
                 candidate = self.write("out.csv", ["id", "target"], [("001", value), ("002", 0.5)])
                 with self.assertRaisesRegex(ValueError, "probability must"):
@@ -78,6 +78,23 @@ class SubmissionTests(unittest.TestCase):
                 sample = self.write("invalid.csv", header, rows)
                 with self.assertRaises(ValueError):
                     validate_submission(sample, self.sample)
+
+    def test_truncated_quoted_field_is_not_a_valid_probability(self):
+        sample = self.write("single.csv", ["id", "target"], [("001", 0)])
+        candidate = self.root / "truncated.csv"
+        candidate.write_text('id,target\n001,"0.2', encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "malformed CSV"):
+            validate_submission(sample, candidate)
+
+    def test_scientific_notation_and_quoted_ids(self):
+        sample = self.write("single.csv", ["id", "target"], [("a,b", 0)])
+        candidate = self.write("out.csv", ["id", "target"], [("a,b", "2e-1")])
+        self.assertEqual(validate_submission(sample, candidate), 1)
+
+    def test_duplicate_ids_in_the_sample(self):
+        sample = self.write("duplicate.csv", ["id", "target"], [("001", 0), ("001", 0)])
+        with self.assertRaisesRegex(ValueError, "Sample contains duplicate IDs"):
+            validate_submission(sample, self.sample)
 
 
 if __name__ == "__main__":

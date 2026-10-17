@@ -1,85 +1,89 @@
 # RMIT Hackathon 2026 - Team HaiQuayXe
 
-Shared workspace for our four-person team. Start here; keep the working version easy for everyone to run.
+[![Project checks](https://github.com/kiemminh000/RMIT-Hackathon---Team-HaiQuayXe/actions/workflows/checks.yml/badge.svg)](https://github.com/kiemminh000/RMIT-Hackathon---Team-HaiQuayXe/actions/workflows/checks.yml)
 
-**Status:** repository setup only. No competition dataset, trained model, or finished challenge solution is included yet. The 2026 task and submission requirements must be confirmed when released. The 2025 challenge is practice/reference material only.
+Our shared workspace for building, evaluating, and delivering competition solutions.
 
-## Start on Windows
+**Readiness:** the engineering foundation is ready to use. The official 2026 task, actual data, scoring rules, and solution are still pending. [2025 materials](docs/2025-reference.md) are historical practice references.
 
-Python 3.11 is the tested local version. Open a terminal inside this repository, then run:
+## Start here
+
+Install **Git** and **Python 3.11 or 3.12**. Clone the repository, enter its folder, and run one setup command:
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -r requirements.txt
-.\.venv\Scripts\python.exe scripts/check_setup.py
-```
-
-Using the environment's Python directly avoids PowerShell activation/permission problems. In VS Code, select `.venv` as the Python interpreter.
-
-On macOS/Linux, use `python3 -m venv .venv`, then `.venv/bin/python` for the remaining commands.
-
-Teammates should clone this repository first:
-
-```text
 git clone https://github.com/kiemminh000/RMIT-Hackathon---Team-HaiQuayXe.git
 cd RMIT-Hackathon---Team-HaiQuayXe
+python scripts/bootstrap.py
 ```
 
-No API key, paid service, GPU, or Kaggle notebook is required for this repository setup. Kaggle accounts and competition/team enrollment are separate from GitHub access. A challenge that requires Kaggle notebooks or a GPU will need additional setup when its requirements are known.
+On macOS/Linux, use `python3 scripts/bootstrap.py`. Setup creates `.venv`, installs the project and pinned dependencies, and checks that the CPU tools work. Re-running it updates the same environment without deleting data. Select `.venv` as your editor's Python interpreter. No activation or PowerShell execution-policy change is needed.
 
-## Where things go
+**Already set up?** After pulling dependency changes, run the setup command again. See [CONTRIBUTING.md](CONTRIBUTING.md) for daily commands and troubleshooting.
 
-| Location | Purpose |
-| --- | --- |
-| `data/raw/` | Downloaded competition files; kept off Git |
-| `src/` | Shared Python solution code |
-| `notebooks/` | Kaggle notebooks and experiments |
-| `apps/` | Application source, if the 2026 challenge requires one |
-| `outputs/` | Generated submissions, reports, and models; kept off Git |
-| `scripts/` | Setup and submission checks |
-| `tests/` | Checks for code that protects submission correctness |
-| `docs/2025-reference.md` | Last year's task summary and conflicting instructions |
-| `docs/2026-brief.md` | Checklist to complete when the actual task arrives |
+## Structure
 
-After joining the relevant Kaggle competition, download its files through your own account. For the 2025 practice task, place `train.csv`, `test.csv`, and `sample_submission.csv` in `data/raw/`. See [data notes](data/README.md). These files have not been downloaded or supplied yet.
-
-## Check a probability submission
-
-For the **2025-style binary probability task**, once the actual sample confirms the column names:
-
-```powershell
-.\.venv\Scripts\python.exe scripts/validate_submission.py --sample data/raw/sample_submission.csv --submission outputs/submission.csv --id-column id --probability-column target
+```text
+src/haiquayxe/          Shared, importable Python code and command-line tools
+  cli.py               Argument handling and user-facing errors
+  environment.py       Local dependency/CPU checks
+  submission.py        Strict probability CSV validation
+scripts/               Setup and repository maintenance commands
+notebooks/             Exploratory and Kaggle notebooks
+apps/                  Application source if a challenge requires it
+data/raw/              Original competition downloads (local, ignored)
+outputs/               Generated predictions, models, reports (local, ignored)
+tests/                 Unit, CLI, and repository-check regression tests
+docs/                  Architecture, challenge brief, and competition runbook
+.github/               Cross-platform CI and pull request template
+pyproject.toml         Package metadata, dependency ranges, lint configuration
+requirements*.txt      Pinned runtime and development dependencies
 ```
 
-This checks the exact header/order, row count, unique IDs in sample order, and finite probabilities from 0 to 1. If the real sample uses `Id`, pass `--id-column Id`. Do not rename columns based on a copied description. The validator does not measure model quality or submit anything to Kaggle. It is not a validator for arbitrary 2026 tasks or string-label submissions.
+Keep reusable logic in `src/haiquayxe/`; notebooks and commands call it. Put an application under `apps/<name>/` only after choosing a task. Never change the original downloaded data. Read the [architecture and extension guide](docs/architecture.md) before adding a new component.
 
-## Work together
-
-1. Pick an owner for data/evaluation, model code, application work, and integration/submission. Adjust once the task is known.
-2. Pull the current `main`, then create a short branch for your work:
-
-   ```text
-   git switch main
-   git pull --ff-only
-   git switch -c feature/describe-your-change
-   ```
-
-3. Commit only your intended files, push your branch, and open a pull request. Have another teammate check it before merging. Avoid editing the same notebook simultaneously.
-4. Keep a runnable version on `main`. Make an early valid submission, then improve it using local validation.
-5. Track each experiment's change, validation score, runtime, and commit in your notes. Keep hidden test labels out of model development.
-
-Before sharing code, run:
+## Commands on Windows
 
 ```powershell
+# Verify the current environment
+.\.venv\Scripts\python.exe -m haiquayxe doctor
+
+# Run tests
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
-git diff --check
-git status --short
+
+# Check code style and formatting
+.\.venv\Scripts\python.exe -m ruff check .
+.\.venv\Scripts\python.exe -m ruff format --check .
+
+# Check tracked paths and staged notebook outputs
+.\.venv\Scripts\python.exe scripts/check_repository.py
 ```
 
-GitHub Actions also runs the setup check and tests on pushes and pull requests. It uses no competition data or secrets. The workflow follows [GitHub's Python CI documentation](https://docs.github.com/en/actions/tutorials/build-and-test-code/python).
+On macOS/Linux, replace `.\.venv\Scripts\python.exe` with `.venv/bin/python`. If the environment is activated, `hq` is the short form of `python -m haiquayxe`. The original `scripts/check_setup.py` and `scripts/validate_submission.py` commands remain available after setup.
 
-## Keep out of Git
+## Check a submission
 
-The ignore rules exclude local datasets/CSV files, model weights, generated output, virtual environments, and common credential files. Clear sensitive dataset examples and outputs before committing notebooks. Check staged files before pushing; ignore rules do not remove files already tracked by Git.
+The current validator supports a **two-column binary probability CSV**, such as the 2025 practice task. Confirm the real sample's exact header spelling first:
 
-Dataset licensing and sharing permissions are separate from our code. No repository license has been chosen yet. Confirm the 2026 sharing rules before publishing competition materials.
+```powershell
+.\.venv\Scripts\python.exe -m haiquayxe validate-submission --sample data/raw/sample_submission.csv --submission outputs/submission.csv --id-column id --probability-column target
+```
+
+It checks CSV syntax, column names/order, row counts, unique IDs in sample order, and finite decimal probabilities in `[0, 1]`. It preserves leading zeroes in IDs. Use `--id-column Id` if the real sample has uppercase `Id`.
+
+A format pass does not establish model quality or positive-class correctness. It does not upload to Kaggle. Different 2026 output types will need their own validator.
+
+## Team workflow
+
+- One owner integrates and submits; a second teammate can repeat the entire run.
+- Use short feature branches and pull requests. Keep `main` runnable; see [contribution steps](CONTRIBUTING.md).
+- CI runs lint, formatting, tests, dependency checks, repository checks, and meaningful commit-diff whitespace checks on **Windows/Linux and Python 3.11/3.12**.
+- Fill in the [2026 brief](docs/2026-brief.md) when the tasks arrive, then follow the [competition runbook](docs/competition-runbook.md).
+- Record experiments using the [experiment template](docs/experiment-template.md). Preserve the best working commit while trying improvements.
+
+No GPU, paid API, or Kaggle notebook is required for this setup. Competition/team enrollment and any challenge-specific runtime setup remain separate.
+
+## Data and access
+
+Download data through your own authorized Kaggle account and place it in `data/raw/`; see [data notes](data/README.md). No competition CSVs are currently included. Common credentials, local data, model files, and outputs are ignored, with CI checks for common accidental tracked files and notebook outputs. Review code and notebook source for sensitive content too; these checks are not a general secret scanner.
+
+Teammates need GitHub collaborator access to push. Repository branch protection is an owner-managed setting; CI alone does not enforce review or prevent direct pushes. Dataset terms are separate from code licensing, and no repository license has been chosen. Confirm actual 2026 sharing rules before publishing competition materials.

@@ -1,11 +1,13 @@
 # Python and local environments
 .venv/
+.venv-*/
 venv/
 __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
+.cache/
 .coverage
 htmlcov/
 build/
@@ -28,6 +30,7 @@ data/**
 outputs/**
 !outputs/.gitkeep
 *.csv
+!tests/fixtures/**/*.csv
 *.parquet
 *.pkl
 *.pickle
