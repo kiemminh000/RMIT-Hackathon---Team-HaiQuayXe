@@ -1,0 +1,49 @@
+# Python and local environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+kaggle.json
+credentials.json
+*.pem
+*.key
+
+# Competition data and generated files
+data/**
+!data/**/
+!data/**/.gitkeep
+!data/README.md
+outputs/**
+!outputs/.gitkeep
+*.csv
+*.parquet
+*.pkl
+*.pickle
+*.joblib
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.zip
+
+# Notebook checkpoints, frontend dependencies, editor/OS files
+.ipynb_checkpoints/
+node_modules/
+.next/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
