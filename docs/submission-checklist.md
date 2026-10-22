@@ -26,7 +26,7 @@ The supplied leaderboard screenshot says the public leaderboard uses approximate
 - [ ] The public repository's top README has the final factual project overview, at most 300 words, covering all five judging prompts. Setup instructions follow separately.
 - [ ] A real two-minute `.mp4` under 100 MB is inside the repository and plays successfully.
 - [ ] Source, README and video are pushed; the repository can be opened without the team's GitHub login.
-- [ ] Submit **one GitHub repository URL** through the exact official Google Form with group name **RMIT_SGS_HaiQuayXe_C2**.
+- [ ] Submit **one GitHub repository URL** through the [official Challenge 2 form](https://forms.gle/HRHYjnqB86j1LFS97) with group name **RMIT_SGS_HaiQuayXe_C2**. The link transcribed from the organiser's slide resolves to “RMIT Hackathon 2026 - Challenge 2”; access verified on competition day.
 - [ ] Preserve the form confirmation and submitted repository commit.
 
-Candidate repository: [Team HaiQuayXe](https://github.com/kiemminh000/RMIT-Hackathon---Team-HaiQuayXe). Local files alone are not a submitted repository. No final C2 submission has been made.
+Candidate repository: [Team HaiQuayXe](https://github.com/kiemminh000/RMIT-Hackathon---Team-HaiQuayXe). Source and current README are published and anonymously accessible; Python checks on Windows/Linux and the TestFlow build/API safeguard checks pass in GitHub Actions. The live Tide demonstration and video remain incomplete. No final C2 form submission has been made.
