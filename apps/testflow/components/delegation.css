@@ -1,0 +1,29 @@
+.delegation-panel{margin-top:24px;border:1px solid var(--line);border-radius:11px;background:#fff;overflow:hidden;scroll-margin-top:20px}
+.delegation-panel .delegation-heading{padding:23px 22px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.delegation-panel .delegation-heading h2{font-size:18px;letter-spacing:-.4px;margin:9px 0 8px}
+.delegation-panel .delegation-heading p{max-width:660px;margin:0;font-size:11px;line-height:1.7;color:#667c72}
+.delegation-panel .delegation-heading .text-button{margin-top:10px;white-space:nowrap}
+.delegation-panel .delegation-card{padding:20px 22px;border-top:1px solid var(--line);scroll-margin-top:20px}
+.delegation-panel .delegation-title{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.delegation-panel .delegation-title>svg{color:var(--teal);width:17px;height:17px}
+.delegation-panel .delegation-title h3{font-size:13px;letter-spacing:-.2px;margin:0}
+.delegation-panel .delegation-title>span{margin-left:auto;font-size:9px;color:#708579}
+.delegation-panel .delegation-checks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
+.delegation-panel .delegation-check{padding:15px;border:1px solid #e3e9e3;border-radius:8px;background:#fafbf8;min-width:0}
+.delegation-panel .delegation-check-top{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:600;color:#496357;margin-bottom:11px}
+.delegation-panel .delegation-number{display:grid;place-items:center;width:21px;height:21px;flex:0 0 21px;border-radius:6px;border:1px solid #d8e2d8;color:#78917d;font-size:10px}
+.delegation-panel .delegation-state{display:inline-block;font-size:10px;line-height:1.4;font-weight:600;color:#607267}
+.delegation-panel .delegation-state.confirmed{color:#25694e}
+.delegation-panel .delegation-check p{font-size:10px;line-height:1.7;color:#6f8177;margin:7px 0 0}
+.delegation-panel .delegation-check .text-button{margin-top:10px}
+.delegation-panel .delegation-request{padding:14px 16px;border-left:3px solid #b4cd91;background:#f6f9f1;border-radius:0 7px 7px 0;margin-top:13px;font-size:10px;color:#536f5d;overflow-wrap:anywhere}
+.delegation-panel .delegation-request>strong{font-size:10px;color:#355a45}
+.delegation-panel .delegation-request>p{line-height:1.7;margin:7px 0 11px;white-space:pre-wrap}
+.delegation-panel .delegation-request dl{display:grid;grid-template-columns:auto 1fr;gap:6px 12px;margin:0;font-size:9px;line-height:1.6}
+.delegation-panel .delegation-request dt{color:#7a8f7c}
+.delegation-panel .delegation-request dd{margin:0;min-width:0}
+.delegation-panel .delegation-request details{margin-top:10px}
+.delegation-panel .delegation-request summary{cursor:pointer;color:#53785c;font-size:9px}
+.delegation-panel .delegation-request details dl{margin-top:8px}
+.delegation-panel .delegation-footnote{font-size:10px;line-height:1.7;color:#718477;margin:0;padding:0 22px 20px}
+@media(max-width:760px){.delegation-panel .delegation-heading{padding:20px 16px;flex-direction:column;gap:4px}.delegation-panel .delegation-card{padding:18px 16px}.delegation-panel .delegation-checks{grid-template-columns:1fr;gap:9px}.delegation-panel .delegation-check{padding:13px 14px}.delegation-panel .delegation-title{align-items:flex-start;flex-wrap:wrap}.delegation-panel .delegation-title>span{font-size:8px}.delegation-panel .delegation-footnote{padding:0 16px 18px}.delegation-panel .delegation-request dl{grid-template-columns:1fr;gap:2px}.delegation-panel .delegation-request dd{margin-bottom:5px}}

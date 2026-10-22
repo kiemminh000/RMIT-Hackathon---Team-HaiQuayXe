@@ -33,11 +33,9 @@ Security claim: the prototype verifies signed Tide permissions and demonstrates 
 
 ## Two-minute demonstration plan
 
-1. **0:00–0:20 — Real problem:** teammates had testing work to do but became dependent on one owner for permissions.
-2. **0:20–0:40 — Specific need:** sign in as a tester; attempt an all-fields export; the API denies access and the interface explains the missing capability.
-3. **0:40–1:10 — Shared authority:** show a real Tide role grant pending after one approval; the tester still cannot export. A second independent steward approves, with the original owner absent.
-4. **1:10–1:40 — Work proceeds:** refresh the tester's identity, export the synthetic test report, and demonstrate that edit/export capabilities are separate.
-5. **1:40–2:00 — Why Tide matters:** show that one steward cannot independently grant the protected capability to another account. Explain what the prototype proves and what is simulated.
+Use the [timed recording runbook](c2-demo-runbook.md) for the current script. The central sequence is a tester requesting severity-edit access while the original owner is absent, one independent approval remaining insufficient, the required approvals committing the real Tide grant, and the refreshed tester successfully editing while export remains separately controlled. Verify a separately authorised CSV export before filming.
+
+The [rubric evidence map](c2-rubric-evidence.md) identifies what this sequence must prove. The application's delegation panel shows saved requests and current verified capabilities; actual approval counts and decisions are checked in Tide's console.
 
 Record the actual live sequence only after testing it. A frontend approval counter or role switcher is not evidence of Tide governance.
 

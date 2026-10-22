@@ -4,15 +4,15 @@ TestFlow helps software-testing teams delegate specific work while sharing the a
 
 ## Project overview — Challenge 2
 
-**Vision & originality.** Testing work should continue when the original owner is unavailable. TestFlow separates everyday severity updates and report exports from the authority to grant those capabilities.
+**Vision & originality.** A testing team should keep working when its original owner is unavailable. TestFlow separates everyday severity updates and report exports from the shared authority to grant those capabilities.
 
-**Trust constraint insight.** Our team became dependent on one owner while trying to update test severity and export a course-project report. Broad administrator access would concentrate power in more accounts. We propose specific capabilities governed by independent team stewards.
+**Trust constraint insight.** Our Software Testing team became dependent on an owner while resolving access needed for a course-project report. Giving everyone broad administrator access would spread that power. We propose specific capabilities whose grants require independent stewards to agree.
 
-**Value & impact.** A tester can receive permission to edit severity without receiving permission to export a complete report. Clear requests and shared stewardship let small teams delegate work without giving every contributor administrative control.
+**Value & impact.** A tester needs to raise a critical case's severity while the project creator is offline. Other stewards can jointly delegate that task without granting report export or administration. Small teams gain continuity while one steward remains unable to approve a protected grant alone.
 
-**Why TideCloak matters.** The application integrates TideCloak's SDK to check signed permissions at its API. Sensitive role grants are intended to require real Tide governance. The demonstration must show one approval remaining insufficient until the live quorum is satisfied; the interface cannot grant access itself.
+**Why TideCloak matters.** TideCloak supplies signed permissions verified by our API and the intended quorum-governed role grants. The decisive demonstration is a grant remaining pending after one independent approval, then becoming effective after the real threshold is met. A saved application request grants nothing.
 
-**Prototype & storytelling.** A synthetic Software Testing workspace provides test cases, guarded edits, CSV exports, access requests and an activity history. The code builds and its local checks pass. Real sign-in and quorum approval still require connection and verification. The current preview states this explicitly. It does not connect to Jira or claim to protect plaintext records from the application host.
+**Prototype & storytelling.** The implemented workspace provides synthetic cases, guarded edits, complete CSV reports, access requests and activity history. Build and local checks pass. Real sign-in and quorum approval remain unverified during Tide's licensing incident. The preview states this explicitly. TestFlow does not connect to Jira, provide end-to-end encryption or protect plaintext from its application host.
 
 ## Current delivery status
 
@@ -23,6 +23,8 @@ TestFlow helps software-testing teams delegate specific work while sharing the a
 **Required delivery:** follow the [submission checklist](docs/submission-checklist.md). C1 uses Kaggle team **RMIT_SGS_HaiQuayXe_C1**; C2 uses **RMIT_SGS_HaiQuayXe_C2** on the organiser's form. The final C2 repository must contain source, this factual overview and a real two-minute video. The video and live Tide verification are not complete.
 
 **Demo preparation:** the [two-minute recording runbook](docs/c2-demo-runbook.md) contains the narration, four-person roles and live verification sequence. Tide's licensing incident remains under investigation according to the support announcement relayed by the team. A clearly labelled preview recording is the fallback if service does not recover in time; it does not prove live Tide integration.
+
+The [rubric evidence map](docs/c2-rubric-evidence.md) connects each judging criterion to the demonstration and identifies the remaining proof. The interface separates saved requests, review in the real Tide console and permissions verified for the current session.
 
 ## Start here
 
