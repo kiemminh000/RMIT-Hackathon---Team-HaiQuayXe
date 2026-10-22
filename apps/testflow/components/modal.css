@@ -1,0 +1,4 @@
+dialog.dialog { border: 0; color: var(--ink); width: calc(100% - 40px); }
+dialog.dialog::backdrop { background: #0c242a7d; backdrop-filter: blur(4px); }
+.dialog form > p { font-size: 12px; line-height: 1.8; color: #78887d; }
+.dialog form .notice { margin: 12px 0; }

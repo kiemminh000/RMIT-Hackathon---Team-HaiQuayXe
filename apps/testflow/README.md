@@ -16,6 +16,8 @@
 
 ## Current verification status
 
+The [demo runbook](../../docs/c2-demo-runbook.md) provides a timed narration, a four-person recording plan and an outage fallback. The team has reported Tide's announcement that its licensing issue is still under investigation; keep the live verification status below explicit until recovery.
+
 - Production build and TypeScript checks pass.
 - Unit tests cover complete CSV output, formula prevention, role scoping, token expiry and public configuration filtering.
 - Without a real adapter, protected APIs return HTTP 503 and the interface clearly says setup is required.

@@ -22,6 +22,8 @@ The supplied leaderboard screenshot says the public leaderboard uses approximate
 
 ## Challenge 2
 
+Use the [two-minute demo and delivery runbook](c2-demo-runbook.md) for roles, narration, proof to capture, and an explicitly labelled fallback if Tide's licensing outage continues. The fallback does not establish compliance with the live-integration requirement.
+
 - [ ] Real TideCloak login, independent capabilities and genuine quorum-governed role grants pass the demonstration.
 - [x] TestFlow source exists at `apps/testflow/`; build and focused tests pass.
 - [ ] The public repository's top README has the final factual project overview, at most 300 words, covering all five judging prompts. Setup instructions follow separately.

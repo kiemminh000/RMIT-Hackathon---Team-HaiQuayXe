@@ -22,6 +22,8 @@ TestFlow helps software-testing teams delegate specific work while sharing the a
 
 **Required delivery:** follow the [submission checklist](docs/submission-checklist.md). C1 uses Kaggle team **RMIT_SGS_HaiQuayXe_C1**; C2 uses **RMIT_SGS_HaiQuayXe_C2** on the organiser's form. The final C2 repository must contain source, this factual overview and a real two-minute video. The video and live Tide verification are not complete.
 
+**Demo preparation:** the [two-minute recording runbook](docs/c2-demo-runbook.md) contains the narration, four-person roles and live verification sequence. Tide's licensing incident remains under investigation according to the support announcement relayed by the team. A clearly labelled preview recording is the fallback if service does not recover in time; it does not prove live Tide integration.
+
 ## Start here
 
 Install **Git** and **Python 3.11 or 3.12**. Clone the repository, enter its folder, and run one setup command:
