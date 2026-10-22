@@ -1,4 +1,4 @@
-"""File validation for a two-column binary probability submission."""
+"""Strict file validation for current and historical competition submissions."""
 
 import csv
 import math
@@ -6,6 +6,7 @@ import re
 from pathlib import Path
 
 _NUMBER = re.compile(r"[+-]?(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)(?:[eE][+-]?[0-9]+)?")
+C1_LABELS = frozenset({"BENIGN", "JAILBREAK", "PROMPT_INJECTION"})
 
 
 def _read_csv(path: Path) -> tuple[list[str], list[dict[str, str]]]:
@@ -75,5 +76,36 @@ def validate_submission(
         if not math.isfinite(probability) or not 0 <= probability <= 1:
             raise ValueError(
                 f"Data record {record}: probability must be finite and between 0 and 1"
+            )
+    return len(rows)
+
+
+def validate_classification_submission(
+    sample: Path, submission: Path, *, expected_rows: int = 6000
+) -> int:
+    """Validate 2026 C1 labels and complete sample ID coverage in sample order.
+
+    This checks format only, not whether a model was trained or predictions are
+    accurate. The sample's placeholder labels are never used as ground truth.
+    """
+    sample_header, sample_rows = _read_csv(sample)
+    header, rows = _read_csv(submission)
+    if sample_header != ["id", "label"] or header != sample_header:
+        raise ValueError("2026 C1 requires exactly the columns id,label in that order")
+    for name, records in (("Sample", sample_rows), ("Submission", rows)):
+        if len(records) != expected_rows:
+            raise ValueError(f"{name}: expected {expected_rows} rows; received {len(records)}")
+        ids = [row["id"] for row in records]
+        if any(not value.strip() for value in ids):
+            raise ValueError(f"{name} contains an empty ID")
+        if len(set(ids)) != len(ids):
+            raise ValueError(f"{name} contains duplicate IDs")
+    if [row["id"] for row in rows] != [row["id"] for row in sample_rows]:
+        raise ValueError("IDs and their order must exactly match the sample")
+    for record, row in enumerate(rows, start=1):
+        if row["label"] not in C1_LABELS:
+            raise ValueError(
+                f"Data record {record}: label must be exactly BENIGN, JAILBREAK, "
+                "or PROMPT_INJECTION"
             )
     return len(rows)

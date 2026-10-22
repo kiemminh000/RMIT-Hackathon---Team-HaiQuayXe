@@ -56,3 +56,18 @@ class CliTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 1)
         self.assertNotIn("Traceback", result.stderr)
+
+    def test_c1_accepts_complete_label_submission(self):
+        sample = self.root / "sample.csv"
+        output = self.root / "predictions.csv"
+        sample.write_text(
+            "id,label\n" + "".join(f"t{i:06d},BENIGN\n" for i in range(6000)), encoding="utf-8"
+        )
+        output.write_text(
+            "id,label\n" + "".join(f"t{i:06d},PROMPT_INJECTION\n" for i in range(6000)),
+            encoding="utf-8",
+        )
+        result = self.run_cli("validate-c1", "--sample", str(sample), "--submission", str(output))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("PASS: 6000 rows", result.stdout)
+        self.assertIn("valid 2026 C1 labels", result.stdout)

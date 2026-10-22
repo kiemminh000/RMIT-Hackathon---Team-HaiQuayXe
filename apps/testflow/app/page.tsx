@@ -1,0 +1,8 @@
+'use client';
+import { useTideCloak } from '@tidecloak/nextjs';
+import { Workspace, Brand, Icon } from '../components/workspace';
+export default function Page() {
+  const { authenticated, isInitializing, initError, login } = useTideCloak();
+  if (authenticated) return <Workspace />;
+  return <main className="login-page"><div className="login-story"><Brand /><span className="eyebrow">BUILT FOR WORK THAT MOVES</span><h1>Good testing.<br />Less waiting.</h1><p>Give your team the right access to do their work. Share the responsibility for who gets it.</p><div className="login-points"><span><Icon name="check" /> Specific permissions</span><span><Icon name="shield" /> Real TideCloak sign-in</span><span><Icon name="people" /> Shared governance</span></div><small>RMIT Hackathon 2026 · Team HaiQuayXe</small></div><section className="login-card"><span className="project-icon"><Icon name="grid" /></span><span className="eyebrow">YOUR TEAM WORKSPACE</span><h2>Welcome to TestFlow</h2><p>Sign in to review test cases, request the access you need, and keep your project moving.</p><div className="login-project"><strong>A3G9ST-DEMO</strong><span>Software Testing · Synthetic demonstration</span></div>{initError && <p className="error" role="alert">TideCloak could not initialise. Check the configured realm and try again.</p>}<button className="button primary wide" disabled={isInitializing} onClick={() => void login()}>{isInitializing ? 'Connecting to TideCloak…' : 'Continue with TideCloak'}<Icon name="arrow" /></button><p className="fine-print">Authentication is handled by TideCloak. TestFlow never asks for your password.</p></section></main>;
+}
