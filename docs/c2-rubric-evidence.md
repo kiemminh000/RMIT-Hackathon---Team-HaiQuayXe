@@ -14,7 +14,7 @@ This is an evidence map, not a predicted score. The [official Plan C notice](htt
 
 Tests verify denied access without a role, denial after one approval, a grant after two distinct eligible subjects, rejection of duplicate/self approvals, separate export/edit capabilities, session expiry/forgery, reset and the disabled-mode gate. The production build and TypeScript checks pass, with **22 passing tests, no skips**, and **43 HTTP checks** against the running application. Browser rehearsal verified the approval sequence, a severity change surviving reload, and export still locked for the edit-only tester. These are observed simulation behaviors, not evidence of real Tide signatures.
 
-The [recorded demonstration](../demo/testflow-demo.mp4) shows the Plan C label, request, first approval, completed grant, tester workspace and activity. The MP4 contains 1080p H.264 video and AAC audio; both streams passed a complete decode check. The root README explains the problem, intended value and Tide integration, with a [walkthrough](c2-demo-runbook.md) for replaying the flow.
+The [recorded demonstration on YouTube](https://youtu.be/YUJ8YIpAtIM) shows the Plan C label, request, first approval, completed grant, tester workspace and activity. The [MP4 copy](../demo/testflow-demo.mp4) contains 1080p H.264 video and AAC audio; both streams passed a complete decode check. The root README explains the problem, intended value and Tide integration, with a [walkthrough](c2-demo-runbook.md) for replaying the flow.
 
 ## What the demo does and does not establish
 
