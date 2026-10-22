@@ -44,7 +44,7 @@ Record the actual live sequence only after testing it. A frontend approval count
 - Source and setup instructions in a public GitHub repository.
 - Project overview at the top of the README, no more than 300 words, addressing all five judging prompts.
 - Two-minute MP4 under 100 MB inside the repository.
-- Repository link through the organiser's submission form before **18:00 Vietnam, 22 October 2026**. Target **17:15–17:30**.
+- Repository link through the organiser's submission form before **18:00 Vietnam, 22 October 2026**. Target **17:00**; reserve the time through **17:30** for delivery problems and confirmation checks.
 
 ## Current external dependency
 

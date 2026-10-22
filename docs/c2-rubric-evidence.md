@@ -28,6 +28,6 @@ The app checks signed claims, then enforces each capability. It stores records a
 
 Finish the real authority demonstration before adding more dashboard features. No new framework, Jira integration, AI chatbot, fabricated approval counter or unverified encryption claim improves this evidence. Synthetic records are permitted, but surrounding mock data cannot replace real Tide authentication and governance.
 
-The [demo runbook](c2-demo-runbook.md) assigns four roles and reserves a final export/review/upload buffer. A two-minute recording still requires setup, a successful take, file checks and upload. Target a complete public repository and form confirmation by **17:30 Vietnam**, before the **18:00** deadline.
+The [demo runbook](c2-demo-runbook.md) assigns four roles and reserves a final export/review/upload buffer. A two-minute recording still requires setup, a successful take, file checks and upload. Target the recording by **16:40**, public upload by **16:50**, and form confirmation by **17:00 Vietnam**. Reserve the time through **17:30** for delivery problems before the **18:00** deadline.
 
 If the service remains unavailable, deliver an explicitly labelled preview and disclose the missing live proof. Do not assume that disclosure grants a rubric exception or that the deadline has moved.

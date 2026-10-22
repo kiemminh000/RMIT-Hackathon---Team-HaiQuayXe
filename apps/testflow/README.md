@@ -1,45 +1,49 @@
 # TestFlow
 
-**A testing workspace where teammates can do their work with specific permissions, while sensitive permission grants use shared TideCloak governance.**
+TestFlow is a small testing workspace with separate permissions for editing test severity and exporting a complete report. Teammates explain what access they need; stewards review the actual permission change in TideCloak.
 
-## Project overview
+## Run the app and rehearse
 
-**Vision & originality.** TestFlow turns a student team's testing workflow into clear capabilities: edit test-case severity or export a complete report. Teammates request exactly what they need instead of asking one owner to do the work for them.
-
-**Trust constraint insight.** Giving everyone administrator access removes friction but concentrates risk. Keeping all decisions with one owner creates delays. TestFlow separates ordinary work from the authority to grant access, with independent stewards governing role changes in TideCloak.
-
-**Value & impact.** A tester can update priorities and prepare a complete submission once delegated, even when the original owner is unavailable. Our synthetic A3G9ST-DEMO project is inspired by a Software Testing course experience; it does not connect to or bypass Jira.
-
-**Why TideCloak matters.** The server verifies Tide-signed identity tokens and separately enforces `test-editor` and `report-exporter`. Role grants must be performed through real Tide governance. The intended demonstration uses three independent administrators; its actual quorum must be checked on the live realm.
-
-**Prototype & storytelling.** The app provides test cases, guarded severity edits, an all-fields CSV export, an access-request inbox and activity history. Demonstrate a real role grant remaining pending after one approval, taking effect after the required approvals, and enabling only the delegated action. Until a realm is connected, the application explicitly shows a read-only synthetic preview.
-
-## Current verification status
-
-The [demo runbook](../../docs/c2-demo-runbook.md) provides a timed narration, a four-person recording plan and an outage fallback. The team has reported Tide's announcement that its licensing issue is still under investigation; keep the live verification status below explicit until recovery.
-
-- Production build and TypeScript checks pass.
-- Unit tests cover complete CSV output, formula prevention, role scoping, token expiry and public configuration filtering.
-- Without a real adapter, protected APIs return HTTP 503 and the interface clearly says setup is required.
-- **Real Tide sign-in, role grants, quorum approvals and permitted API actions are not yet verified.** Connect and test a real realm before recording or claiming these flows.
-
-## Run locally
-
-Requirements: Node.js 20.9+ for the app (Node 24 is used for the tests), npm, and a running TideCloak instance for protected functionality.
+Use **Node.js 24** and npm. From the repository root:
 
 ```powershell
 cd apps/testflow
 npm ci
-npm run dev
+npm run dev -- --hostname 127.0.0.1 --port 3030
 ```
 
-The root Python setup is separate. The app starts in a clearly marked preview when `tidecloak.json` is absent or invalid. To make a production build:
+Open **http://127.0.0.1:3030/**. Without a valid `tidecloak.json`, the app shows a read-only preview. You can search the synthetic cases, filter them, open their details and explain the delegation flow. Protected actions require a real Tide connection.
+
+The [two-minute demo runbook](../../docs/c2-demo-runbook.md) has the narration, four-person roles and recording steps. Rehearse its preview sequence now. Use the live sequence only after genuine sign-in, independent approvals and permitted actions have been verified.
+
+The app requires Node.js 20.9 or newer; Node 24 is used for the tests. Python is not needed to run TestFlow.
+
+## Why we built it
+
+During our Software Testing course, we wanted to update severity and export a Jira report. The Atlassian MCP connection required site-administrator authorization, so we had to ask the project owner for help. That experience prompted a broader question: how can a team delegate a specific task when the person who originally set up access is unavailable?
+
+TestFlow explores that question with the synthetic **A3G9ST-DEMO** project. It has no Jira integration and does not suggest that Jira cannot edit severity or export reports. Our proposed workflow lets independent stewards jointly grant a narrow permission, while a single steward cannot complete a protected grant alone. The configured threshold must be verified in the real Tide realm.
+
+The interface shows three separate facts: a request saved in TestFlow, review details available in the Tide console, and capabilities verified for the current session. It does not infer approval from a saved request or infer denial when a capability is absent. The [root project overview](../../README.md#project-overview--challenge-2) addresses the five judging criteria.
+
+## Current verification status
+
+Tide's licensing incident is blocking realm activation. The local server runs, but that alone does not establish a working Tide integration. Keep this distinction visible in the recording.
+
+- Production build and TypeScript checks pass.
+- Tests cover complete CSV output, formula prevention, role scoping, token expiry, public configuration filtering and the distinction between saved requests and verified access.
+- Without a real adapter, protected APIs return HTTP 503 and the interface clearly says setup is required.
+- **Real Tide sign-in, role grants, quorum approvals and permitted API actions are not yet verified.** Connect and test a real realm before presenting these flows as working.
+
+## Check and build
+
+Run these commands from `apps/testflow`:
 
 ```powershell
 npm run typecheck
 npm test
 npm run build
-npm start
+npm start -- --hostname 127.0.0.1 --port 3030
 ```
 
 The lockfile records installed versions. The foundation uses Next.js 16.4.2, React 19 and `@tidecloak/nextjs` 0.14.40, adapted from official `@tidecloak/create-nextjs` 0.14.33. Confirm server/SDK compatibility when the real instance is provided.

@@ -1,32 +1,44 @@
 # TestFlow — RMIT Hackathon 2026 · Team HaiQuayXe
 
-TestFlow helps software-testing teams delegate specific work while sharing the authority to grant sensitive permissions.
+TestFlow is a testing workspace where teammates request permission to edit test severity or export a report, and stewards review permission changes through TideCloak.
 
 ## Project overview — Challenge 2
 
-**Vision & originality.** A testing team should keep working when its original owner is unavailable. TestFlow separates everyday severity updates and report exports from the shared authority to grant those capabilities.
+**Vision & originality.** TestFlow separates the work a tester needs to do from the authority to grant access. Editing test severity and exporting a complete report are separate permissions, with shared stewardship intended to keep work moving when the original owner is unavailable.
 
-**Trust constraint insight.** Our Software Testing team became dependent on an owner while resolving access needed for a course-project report. Giving everyone broad administrator access would spread that power. We propose specific capabilities whose grants require independent stewards to agree.
+**Trust constraint insight.** During our Software Testing course, we wanted to update test severity and export a Jira report. Our Atlassian MCP connection required site-administrator authorization, so we needed help from the project owner. This access problem inspired TestFlow; it is not a claim that Jira lacks these features.
 
-**Value & impact.** A tester needs to raise a critical case's severity while the project creator is offline. Other stewards can jointly delegate that task without granting report export or administration. Small teams gain continuity while one steward remains unable to approve a protected grant alone.
+**Value & impact.** In our demo scenario, a tester needs to change a case's severity while the owner is offline. Independent stewards would jointly grant editing permission without also granting report export or administration. The tester could then finish the task without asking someone else to perform it.
 
-**Why TideCloak matters.** TideCloak supplies signed permissions verified by our API and the intended quorum-governed role grants. The decisive demonstration is a grant remaining pending after one independent approval, then becoming effective after the real threshold is met. A saved application request grants nothing.
+**Why TideCloak matters.** The API checks Tide-signed permissions. The intended live demonstration uses Tide governance: one approval is insufficient, and a grant takes effect only after the configured threshold is met. Saving a request in TestFlow grants no access.
 
-**Prototype & storytelling.** The implemented workspace provides synthetic cases, guarded edits, complete CSV reports, access requests and activity history. Build and local checks pass. Real sign-in and quorum approval remain unverified during Tide's licensing incident. The preview states this explicitly. TestFlow does not connect to Jira, provide end-to-end encryption or protect plaintext from its application host.
+**Prototype & storytelling.** The app includes synthetic test cases, permission checks, CSV exports, requests and activity history. It distinguishes saved requests from Tide review and current signed permissions. Build and local checks pass; real sign-in and quorum approval remain unverified during Tide's licensing incident. TestFlow has no Jira connection, end-to-end encryption or protection against its own host accessing plaintext.
+
+## Run TestFlow and rehearse the demo
+
+Use **Node.js 24** and npm. From the repository root:
+
+```powershell
+cd apps/testflow
+npm ci
+npm run dev -- --hostname 127.0.0.1 --port 3030
+```
+
+Open **http://127.0.0.1:3030/**. Without a valid Tide adapter, the app opens a read-only preview with synthetic records. You can search cases, open their details and rehearse the explanation. Sign-in, editing, export and access requests require a real Tide connection.
+
+Follow the [two-minute demo runbook](docs/c2-demo-runbook.md) for the narration, team roles and recording sequence. Use its preview sequence while licensing is blocked. The [TestFlow setup guide](apps/testflow/README.md) covers the production build and Tide connection; the [rubric evidence map](docs/c2-rubric-evidence.md) explains what the demo needs to establish. Python setup is only needed for the separate Challenge 1 tools below.
 
 ## Current delivery status
 
 [![Project checks](https://github.com/kiemminh000/RMIT-Hackathon---Team-HaiQuayXe/actions/workflows/checks.yml/badge.svg)](https://github.com/kiemminh000/RMIT-Hackathon---Team-HaiQuayXe/actions/workflows/checks.yml)
 
-**Competition day:** start with the [Kaggle C1 guide](docs/kaggle-c1-guide.md) and [2026 requirements](docs/2026-brief.md). C1's third accepted submission scored **0.95610 on the public leaderboard**, improving on 0.94870 and 0.91371. It uses approved XLM-RoBERTa Large, 512-token inputs and three epochs on 11,200 training examples, with **0.964754 macro-F1 on 2,800 held-out examples**. A separate full-14,000-row Large refit is running; its result is not yet available. Three submission attempts remain as of 14:33 Vietnam. The public score covers approximately 30% of test examples; final standings use the other 70%. C2's [TestFlow application](apps/testflow/README.md) and local TideCloak server run on this computer. Tide's remote wallet activation is being resolved before real sign-in and governance verification. [2025 materials](docs/2025-reference.md) are historical references.
+**Challenge 1:** the best accepted submission has a **0.95610 public leaderboard score**. It uses approved XLM-RoBERTa Large, 512-token inputs and three epochs on 11,200 training examples. Its separate 2,800-example holdout scored **0.964754 macro-F1**. A full-data Large refit and a separate mmBERT experiment are in progress. The public score covers approximately 30% of the test set; final standings use the other 70%. See the [Kaggle guide](docs/kaggle-c1-guide.md) for the workflow and the [submission checklist](docs/submission-checklist.md) for current run and submission details.
 
-**Required delivery:** follow the [submission checklist](docs/submission-checklist.md). C1 uses Kaggle team **RMIT_SGS_HaiQuayXe_C1**; C2 uses **RMIT_SGS_HaiQuayXe_C2** on the organiser's form. The final C2 repository must contain source, this factual overview and a real two-minute video. The video and live Tide verification are not complete.
+**Challenge 2:** TestFlow and the local TideCloak server run on this computer. Tide's licensing incident is blocking activation, so real sign-in and governed permission changes remain unverified. The required demo video is also unfinished. A preview recording can explain the implemented product, but does not establish that live Tide integration works.
 
-**Demo preparation:** the [two-minute recording runbook](docs/c2-demo-runbook.md) contains the narration, four-person roles and live verification sequence. Tide's licensing incident remains under investigation according to the support announcement relayed by the team. A clearly labelled preview recording is the fallback if service does not recover in time; it does not prove live Tide integration.
+**Submission:** follow the [submission checklist](docs/submission-checklist.md) and [2026 requirements](docs/2026-brief.md). C1 uses **RMIT_SGS_HaiQuayXe_C1** on Kaggle; C2 uses **RMIT_SGS_HaiQuayXe_C2** on the organiser's form. The C2 repository must contain source, this overview and a real two-minute video. [2025 materials](docs/2025-reference.md) are historical references.
 
-The [rubric evidence map](docs/c2-rubric-evidence.md) connects each judging criterion to the demonstration and identifies the remaining proof. The interface separates saved requests, review in the real Tide console and permissions verified for the current session.
-
-## Start here
+## Set up the Challenge 1 Python tools
 
 Install **Git** and **Python 3.11 or 3.12**. Clone the repository, enter its folder, and run one setup command:
 

@@ -1,6 +1,6 @@
 # Final submission checklist — 22 October 2026
 
-Both challenges close at **18:00 Vietnam (UTC+7)**. Aim for accepted, accessible deliverables by **17:30**. This checklist follows the organiser's submission slide provided by the team.
+Both challenges close at **18:00 Vietnam (UTC+7)**. Target **17:00 for the C2 form**, **17:15 for final C1 selection**, and use the time through **17:30** to resolve delivery problems and verify confirmations. Submit a complete package earlier when possible. This checklist follows the organiser's submission slide provided by the team.
 
 ## Challenge 1
 
@@ -9,7 +9,7 @@ Both challenges close at **18:00 Vietnam (UTC+7)**. Aim for accepted, accessible
 - [x] Approved XLM-RoBERTa Base and Large have been genuinely fine-tuned in separate experiments; validation evidence is preserved.
 - [x] First CSV accepted: submission **57509933**, public score **0.91371**. This is a baseline, not a final ranking.
 - [x] Base full-data refit accepted: submission **57512689**, public score **0.94870**.
-- [x] Large development model accepted: submission **57515188**, public score **0.95610**, held-out macro-F1 **0.964754**. Three submissions used; three remain under the event's six-attempt limit, as of 14:33 Vietnam.
+- [x] Large development model accepted: submission **57515188**, public score **0.95610**, held-out macro-F1 **0.964754**. Three submissions used; three remain under the event's six-attempt limit, verified at 15:30 Vietnam. Recheck before any new submission.
 - [ ] Select the final candidate using validation and error analysis; validate exactly 6,000 `id,label` rows before submission.
 - [x] Preserve a complete executable notebook for the accepted Large model. Repository source mirrors the public reproduction notebook; event-only time limits are disabled and outputs cleared. Executed training settings are retained.
 - [x] Publish the correctly named main notebook with the official competition and approved Large model attached for the [competition Code area](https://www.kaggle.com/competitions/rmit-hackathon-2026/code). Public metadata, source and anonymous access were verified; publication used Quick Save without retraining.
@@ -23,6 +23,8 @@ The supplied leaderboard screenshot says the public leaderboard uses approximate
 ## Challenge 2
 
 Use the [two-minute demo and delivery runbook](c2-demo-runbook.md) for roles, narration, proof to capture, and an explicitly labelled fallback if Tide's licensing outage continues. The fallback does not establish compliance with the live-integration requirement.
+
+The team is rehearsing now. People still need to complete their own Tide enrolment if activation recovers, record the demonstration, and review the exported video. The coding lead handles packaging, uploads and receipt checks. Aim for the recording by **16:40** and a publicly accessible video by **16:50**.
 
 - [ ] Real TideCloak login, independent capabilities and genuine quorum-governed role grants pass the demonstration.
 - [x] TestFlow source exists at `apps/testflow/`; build and focused tests pass.
