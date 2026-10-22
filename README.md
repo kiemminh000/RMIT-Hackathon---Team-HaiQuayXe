@@ -1,6 +1,6 @@
 # TestFlow · Team HaiQuayXe
 
-[Watch the demo (MP4, 5.6 MB)](demo/testflow-demo.mp4)
+[Download and watch the demo (MP4, 5.6 MB)](https://github.com/kiemminh000/RMIT-Hackathon---Team-HaiQuayXe/raw/refs/heads/main/demo/testflow-demo.mp4)
 
 TestFlow helps a testing team keep working when its project owner is unavailable. A tester requests permission to change case severity, two stewards review the request, and the tester can finish the task. Exporting a report requires separate approval.
 
