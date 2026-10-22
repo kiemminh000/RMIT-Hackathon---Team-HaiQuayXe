@@ -12,7 +12,7 @@ npm ci
 npm run demo
 ```
 
-Open **http://127.0.0.1:3030/demo**. The command enables `TESTFLOW_DEMO_MODE=1` and starts Next on the loopback address and port. Choose **Tester**, then follow the [recording runbook](../../docs/c2-demo-runbook.md). No Docker, licence, Tide account or Python installation is required for Plan C.
+Open **http://127.0.0.1:3030/demo**. The command enables `TESTFLOW_DEMO_MODE=1` and starts Next on the loopback address and port. Choose **Tester**, then follow the [walkthrough](../../docs/c2-demo-runbook.md), or [watch the recorded demo](../../demo/testflow-demo.mp4). No Docker, licence, Tide account or Python installation is required for Plan C.
 
 The banner identifies the simulation throughout. One viewer can select every identity; these are not independent people, real Tide sign-ins or cryptographic approvals. **Reset rehearsal → Reset demo data** restores the synthetic cases and clears all simulated requests, grants, sessions and activity.
 

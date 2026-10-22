@@ -12,9 +12,9 @@ This is an evidence map, not a predicted score. The [official Plan C notice](htt
 
 ## Current evidence
 
-The isolated simulation source and its focused tests are implemented. Tests verify denied access without a role, denial after one approval, a grant after two distinct eligible subjects, rejection of duplicate/self approvals, separate export/edit capabilities, session expiry/forgery, reset and the disabled-mode 404 gate. The production build and TypeScript checks pass, with **22 passing tests, no skips**, and **43 actual HTTP checks** against the running application. Browser rehearsal verified 0/1/2 approvals, the resulting permission grant, a severity change surviving reload, and export still locked for the edit-only tester. These are observed simulation behaviors, not evidence of real Tide signatures. The actual exported recording still requires a separate complete playback check.
+Tests verify denied access without a role, denial after one approval, a grant after two distinct eligible subjects, rejection of duplicate/self approvals, separate export/edit capabilities, session expiry/forgery, reset and the disabled-mode gate. The production build and TypeScript checks pass, with **22 passing tests, no skips**, and **43 HTTP checks** against the running application. Browser rehearsal verified the approval sequence, a severity change surviving reload, and export still locked for the edit-only tester. These are observed simulation behaviors, not evidence of real Tide signatures.
 
-The root README answers all five prompts. Actual video capture, final public upload and the form confirmation remain completion tasks. Follow the [runbook](c2-demo-runbook.md): recording by **16:40**, video by **16:50**, form by **17:00 Vietnam**.
+The [recorded demonstration](../demo/testflow-demo.mp4) shows the Plan C label, request, first approval, completed grant, tester workspace and activity. The MP4 contains 1080p H.264 video and AAC audio; both streams passed a complete decode check. The root README explains the problem, intended value and Tide integration, with a [walkthrough](c2-demo-runbook.md) for replaying the flow.
 
 ## What the demo does and does not establish
 

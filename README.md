@@ -1,5 +1,7 @@
 # TestFlow · Team HaiQuayXe
 
+[Watch the demo (MP4, 5.6 MB)](demo/testflow-demo.mp4)
+
 TestFlow helps a testing team keep working when its project owner is unavailable. A tester requests permission to change case severity, two stewards review the request, and the tester can finish the task. Exporting a report requires separate approval.
 
 The idea came from our Software Testing course. An Atlassian MCP connection needed site-admin authorisation, leaving us dependent on one teammate. We built a standalone workspace to explore how a team could delegate a specific task without handing out administrator access. The records are synthetic; TestFlow does not connect to Jira.
