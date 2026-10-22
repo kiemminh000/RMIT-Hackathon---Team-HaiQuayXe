@@ -1,33 +1,25 @@
-# TestFlow: rubric, evidence and remaining gaps
+# TestFlow: judging evidence for Plan C
 
-This is a delivery guide, not a predicted score. The organiser judges the README and recorded demonstration together. Source: the team's supplied [UNLOCKED brief](https://tide.org/unlocked/#challenge).
+This is an evidence map, not a predicted score. The [official Plan C notice](https://tide.org/unlocked/#plan-c) permits this simulation with equal judging treatment. The product must still explain where Tide fits and why shared grant authority matters.
 
-## One convincing possibility
+| Criterion | Weight | Story and evidence to present |
+|---|---:|---|
+| Vision & originality | 25% | The original project owner is unavailable; shared stewardship delegates a narrow testing task instead of requiring the owner to do it. |
+| Trust constraint insight | 20% | Show that a request and one simulated approval grant nothing. Two distinct eligible simulated subjects must approve. Explain that real Tide policy would protect grant authority. |
+| Value & impact | 20% | Return to Tester, change TF-003 severity, and show export still locked. Avoid invented time-saved or adoption statistics. |
+| Why TideCloak matters | 20% | Explain the difference between an operator-controlled role table and signed-policy governance. Cite the actual MCP planning and the [integration map](c2-plan-c.md). Never describe the demo cookie or counter as Tide signatures. |
+| Prototype & storytelling | 15% | Show the working request, pending approval, completed grant, server-permitted edit and activity. The separate export permission produces all 11 fields after its own approval sequence. |
 
-**The project creator is unavailable. A tester still receives a narrowly scoped capability from independent stewards, while one steward cannot grant it alone.**
+## Current evidence
 
-The idea is continuity without a single identity administrator controlling protected grants. A conventional testing dashboard, a request form or a local approval counter would not establish that result. The live Tide governance sequence is the central evidence.
+The isolated simulation source and its focused tests are implemented. Tests verify denied access without a role, denial after one approval, a grant after two distinct eligible subjects, rejection of duplicate/self approvals, separate export/edit capabilities, session expiry/forgery, reset and the disabled-mode 404 gate. The production build and TypeScript checks pass, with **22 passing tests, no skips**, and **43 actual HTTP checks** against the running application. Browser rehearsal verified 0/1/2 approvals, the resulting permission grant, a severity change surviving reload, and export still locked for the edit-only tester. These are observed simulation behaviors, not evidence of real Tide signatures. The actual exported recording still requires a separate complete playback check.
 
-| Criterion | Weight | What we should make clear | Evidence and current gap |
-|---|---:|---|---|
-| Vision & originality | 25% | Teams can delegate urgent testing work when the original owner is absent, without giving every contributor broad administration. | Distinct editing/export capabilities and a concrete owner-unavailable story are implemented/planned. Avoid presenting another issue tracker as the innovation. |
-| Trust constraint insight | 20% | A requester cannot approve themselves; one identity steward cannot commit a protected grant when the actual threshold requires more. | Application requests grant nothing. Real Tide pending/committed states and independent identities still need verification. |
-| Value & impact | 20% | A tester changes a case's severity for the team's report while report export remains separately controlled. | Synthetic test workflow and protected endpoints exist. Demonstrate the actual successful edit and persistence after the real grant. Do not invent time-saved statistics. |
-| Why TideCloak matters | 20% | The authority to issue the accepted capability is governed by Tide; approving a row in the application is insufficient. | SDK token verification is implemented. Quorum-protected role issuance remains blocked by remote licensing. This is the most important unresolved evidence. |
-| Prototype & storytelling | 15% | Show the before/request/one-approval-still-insufficient/threshold-met/after sequence clearly. | Production build, local checks, browser preview and a timed runbook are ready. Real protected actions, final recording and submission remain incomplete. |
+The root README answers all five prompts. Actual video capture, final public upload and the form confirmation remain completion tasks. Follow the [runbook](c2-demo-runbook.md): recording by **16:40**, video by **16:50**, form by **17:00 Vietnam**.
 
-## Precise protection boundary
+## What the demo does and does not establish
 
-Tide's [QEA setup guide](https://docs.tide.org/Admin/SetupIGA) describes governed changes captured for independent approval and commitment at quorum. Its [Management API reference](https://docs.tide.org/API/Management%20API) distinguishes a captured change from a committed grant. Verify those states on the actual realm; an application request ID is not a Tide change-request ID.
+The server enforces the simulation's two-of-three rule and exact capabilities. One viewer deliberately controls all demo identities; there is no claim of independent real approvers. Live Tide thresholds follow signed policy, and live canon does not universally forbid an eligible requester from approving their own change. Self-approval rejection is our additional demo policy.
 
-For this prototype, the intended claim is **one identity administrator cannot create a valid protected capability grant alone once genuine multi-administrator governance is configured**. It remains a claim to demonstrate, not a completed verification.
+The live path remains separate. Its SDK verification and setup are retained, but real enrollment and governed grants remain unverified. That no longer blocks delivery under official Plan C. Synthetic records, ordinary activity and a selectable identity cannot prove confidentiality, tamper resistance or protection from the app operator.
 
-The app checks signed claims, then enforces each capability. It stores records and activity in plaintext under its operator's control. It therefore does not establish confidentiality or integrity against a malicious application host. The CSV permission protects the official bulk-export action; it does not stop an authorised viewer copying fields they can already see.
-
-## Keep the product focused
-
-Finish the real authority demonstration before adding more dashboard features. No new framework, Jira integration, AI chatbot, fabricated approval counter or unverified encryption claim improves this evidence. Synthetic records are permitted, but surrounding mock data cannot replace real Tide authentication and governance.
-
-The [demo runbook](c2-demo-runbook.md) assigns four roles and reserves a final export/review/upload buffer. A two-minute recording still requires setup, a successful take, file checks and upload. Target the recording by **16:40**, public upload by **16:50**, and form confirmation by **17:00 Vietnam**. Reserve the time through **17:30** for delivery problems before the **18:00** deadline.
-
-If the service remains unavailable, deliver an explicitly labelled preview and disclose the missing live proof. Do not assume that disclosure grants a rubric exception or that the deadline has moved.
+Keep the explanation centered on shared authority and useful work. Additional dashboards, a Jira connection or an unverified encryption claim are outside this demonstration.

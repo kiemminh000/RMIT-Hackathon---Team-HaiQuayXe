@@ -1,58 +1,36 @@
 # TestFlow — Challenge 2 product brief
 
-Status: application implemented; production build and focused tests pass. The local TideCloak runtime is verified. Remote wallet activation, human enrolment and the live governance demonstration remain incomplete.
+Delivery route: the [official Plan C simulation](https://tide.org/unlocked/#plan-c). The app demonstrates its workflow with simulated identity, governance and roles; live verification is no longer required for equal judging under this route. A recording and confirmed submission are still required.
 
-## Problem grounded in the team's experience
+## Problem
 
-In a Software Testing course, team members needed to update test-case severity and export project A3G9ST to CSV with all fields. They depended on an owner who could not resolve the permission request. The supplied screenshot specifically shows an **Atlassian MCP OAuth app requiring site-administrator authorisation**. It does not establish the user's native Jira edit/export permissions. Do not claim Jira lacks these features or that this app bypasses Atlassian's controls.
+During our Software Testing course, teammates needed to update severity and export project A3G9ST with all fields. They depended on an owner who could not resolve the access request. The supplied screenshot shows an Atlassian MCP connection awaiting site-admin authorisation; it does not prove that Jira itself lacks editing or export capabilities.
 
-Our opportunity: let testing teams delegate specific capabilities clearly, while protecting the authority to grant those capabilities from unilateral changes.
+TestFlow asks how a team can delegate a narrow task when the original owner is unavailable, while sharing the authority to grant access.
 
-## Product scope
+## Product
 
-TestFlow is a small software-testing workspace using synthetic records in **A3G9ST-DEMO**. It is a standalone competition prototype; connecting the original Jira site is outside the first demonstration.
+A standalone workspace presents eight synthetic cases in **A3G9ST-DEMO**. A tester requests `test-editor` or `report-exporter` with a reason. The request grants nothing. Two distinct simulated stewards approve the same request; then the server allows only that capability. Editing does not grant export or administration. The grant covers subsequent permitted actions rather than requiring a fresh vote for every edit.
 
-- A readable list of test cases with severity, status and owner.
-- Separate permissions to change severity and export a complete CSV report.
-- A clear route to request the missing capability.
-- Real TideCloak sign-in and server-side verification of the required permission.
-- Real Tide governance for granting protected roles. Requests and UI status alone cannot grant access.
-- A record of app actions, described as a prototype activity history rather than a tamper-proof audit ledger.
+The demonstration shows the full before/request/one-approval-blocked/two-approvals-granted/after sequence. CSV contains all 11 fields, and the activity history explains the changes. Reset restores a clean rehearsal.
 
-The test data and surrounding issue-tracking system are synthetic, as permitted in the challenge. The authentication and permission enforcement must be real before claiming a working integration.
+## Why Tide matters
 
-## Authority model
+Ordinary backend roles leave permission-granting authority under one operator's control. The intended Tide deployment uses signed governance policy and distinct eligible administrators to protect that authority. A tester can keep working without the original owner personally carrying out the task or one steward unilaterally issuing a protected grant.
 
-The first implementation uses one project, with `test-editor` and `report-exporter` capabilities. A user with edit access does not automatically receive export access or administrative privileges.
+We used Tide MCP scenario, RBAC playbook and current IGA canon to plan this architecture. The [Plan C integration map](c2-plan-c.md) records the actual retrieval and maps simulated behavior to the live system. Live policy determines its own threshold. Two-of-three and rejection of self-approval are chosen demo rules, not universal Tide requirements.
 
-Three independently enrolled Tide administrators are intended to govern sensitive permission grants. The documented default quorum gives two approvals for three administrators. Verify the actual change request's threshold and pending/committed state on the running server before making a two-of-three claim. Use Tide's built-in governance console for the first demonstration.
+## Honest boundaries
 
-Ordinary authorised work does not ask for a new governance vote on each edit or export. Governance controls the permission grant. Existing authenticated sessions may need token refresh or re-login after a grant.
+A viewer can select every demo identity. Those selections are not independent humans or cryptographic signatures. The backend enforces the simulated workflow, but a malicious application host can alter the code or read plaintext. Records and activity are not end-to-end encrypted or tamper-proof. There is no Jira integration; export permission cannot stop copying information already visible to a viewer.
 
-Security claim: the prototype verifies signed Tide permissions and demonstrates that one identity administrator cannot commit a protected role grant alone. This does not establish confidentiality against a malicious application host or prevent copying data after an authorised export. End-to-end encryption is not part of the initial scope.
+The live Tide integration remains available separately and unverified during activation problems. Plan C neither changes its authentication nor pretends that simulated grants are real Tide grants.
 
-## Two-minute demonstration plan
+## Deliverables
 
-Use the [timed recording runbook](c2-demo-runbook.md) for the current script. The central sequence is a tester requesting severity-edit access while the original owner is absent, one independent approval remaining insufficient, the required approvals committing the real Tide grant, and the refreshed tester successfully editing while export remains separately controlled. Verify a separately authorised CSV export before filming.
+- Public source repository and a five-prompt README overview within 300 words.
+- Working Plan C demonstration using the [exact recording script](c2-demo-runbook.md).
+- Actual two-minute MP4 under 100 MB inside the repository.
+- Repository URL submitted as **RMIT_SGS_HaiQuayXe_C2** through the organiser's form.
 
-The [rubric evidence map](c2-rubric-evidence.md) identifies what this sequence must prove. The application's delegation panel shows saved requests and current verified capabilities; actual approval counts and decisions are checked in Tide's console.
-
-Record the actual live sequence only after testing it. A frontend approval counter or role switcher is not evidence of Tide governance.
-
-## Required delivery
-
-- Source and setup instructions in a public GitHub repository.
-- Project overview at the top of the README, no more than 300 words, addressing all five judging prompts.
-- Two-minute MP4 under 100 MB inside the repository.
-- Repository link through the organiser's submission form before **18:00 Vietnam, 22 October 2026**. Target **17:00**; reserve the time through **17:30** for delivery problems and confirmation checks.
-
-## Current external dependency
-
-A running **TideCloak** instance and human administrator enrolment are required. Docker Desktop 4.96.2 is running under `D:\Applications\DockerDesktop`, with its WSL data verified under `D:\DockerData`. The persistent TideCloak container is bound to `127.0.0.1:8080`; TestFlow runs at `127.0.0.1:3030`. The initial realm exists and the licence-active check succeeds, but Tide's external wallet finalization has returned errors. Real sign-in and quorum approval remain unverified until that activation completes. No simulated approval is substituted for real governance.
-
-## References
-
-- [Challenge brief](https://tide.org/unlocked/#challenge), supplied by the team.
-- [Tide QEA setup](https://docs.tide.org/Admin/SetupIGA).
-- [Atlassian explanation of the supplied authorisation error](https://support.atlassian.com/atlassian-cloud/kb/your-site-admin-must-authorize-this-app-error-in-atlassian-cloud-apps/).
-- Team's account of the Software Testing course and screenshot, provided on 22 October 2026.
+Target recording **16:40**, public video **16:50**, form confirmation **17:00**, and delivery checks through **17:30 Vietnam**, 22 October 2026. Official deadline: **18:00**. Do not mark video or form complete before checking the actual artifact and confirmation.

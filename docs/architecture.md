@@ -1,4 +1,22 @@
-# Architecture and extension guide
+# Architecture
+
+The repository contains two independent competition deliverables. Challenge 1 runs model training on Kaggle. Challenge 2 is TestFlow, a Next.js testing workspace. Neither requires the other's runtime.
+
+## TestFlow
+
+The Plan C UI at `/demo` calls only `/api/demo/*`. `lib/demo.ts` maintains isolated in-memory sessions, requests, grants, synthetic cases and activity in one Node process. A serialized mutation queue ensures duplicate approvals cannot race. Reset or restart clears the simulation.
+
+Saving a request grants nothing. Two different eligible demo stewards must approve before the server grants its capability. Editing and export require separate capabilities, checked on every protected action. The identity selector deliberately simulates the actors; it is not a production identity service.
+
+`TESTFLOW_DEMO_MODE=1` enables the simulation. Demo cookies apply only to `/api/demo`; they cannot authenticate the retained live API. `components/tide-entry.tsx` and the live APIs retain the Tide SDK path and its token checks. The [integration map](c2-plan-c.md) explains where verified Tide identities and signed policy replace simulated authority.
+
+## Challenge 1
+
+`notebooks/RMIT_SGS_HaiQuayXe_C1.ipynb` is self-contained for Kaggle. It loads the approved attached checkpoint and competition data, checks the split, trains, evaluates and exports audited predictions. It does not require the local Python package inside Kaggle.
+
+`src/haiquayxe/` supplies local environment and submission-validation commands. Competition files remain in ignored `data/raw/`. Logs, receipts, metrics, predictions and model artifacts remain in ignored `outputs/`. The [Kaggle guide](kaggle-c1-guide.md) records the accepted model and experiment history.
+
+## Shared repository conventions
 
 ## Design goals
 
@@ -6,7 +24,7 @@
 2. Shared logic is importable and testable outside the repository's current directory.
 3. Experiments can change quickly without destabilizing submission code.
 4. Raw input, derived outputs, and source code have clear ownership and locations.
-5. Every added component serves a confirmed task; the 2026 solution is not assumed.
+5. Each component serves a confirmed competition requirement.
 
 ## Boundaries
 
@@ -17,7 +35,9 @@ flowchart LR
     Core --> Raw[Local data/raw]
     Core --> Out[Local outputs]
     Tests[Tests] --> Core
-    App[Optional browser/application project] --> Export[Explicit file or API contract if needed]
+    App[TestFlow UI] --> Demo[Isolated Plan C API]
+    Demo --> Grants[Simulated requests and grants]
+    Demo --> Cases[Synthetic cases and CSV]
 ```
 
 | Area | Responsibility | Avoid |
@@ -31,7 +51,7 @@ flowchart LR
 | `outputs/` | Regenerable submissions, metrics, models, reports | Treating a local result as a published deliverable |
 | `tests/` | Synthetic cases, regression checks, command-line integration | Private competition data or tests that merely repeat implementation |
 
-The package currently contains environment and submission utilities only. Add `data.py`, `evaluation.py`, or a task-specific subpackage when real functionality requires it. No empty model/service layers are needed in advance.
+The Python package contains environment and submission utilities. Model training remains in the Kaggle notebook; TestFlow owns its own Node dependencies and API contracts.
 
 ## Paths and portability
 
@@ -39,9 +59,9 @@ Command-line file paths are explicit and relative to the caller's working direct
 
 ## Input/output contracts
 
-Inspect actual schemas before implementing adapters. Keep IDs as strings, document the positive class and target direction, and fit learned preprocessing only on the training split. Export through a tested function; validate the generated artifact against the official template before uploading. The existing validator is intentionally limited to binary probabilities.
+Keep IDs as strings and fit learned preprocessing only on training rows. The C1 validator checks the three-class label format and exact sample IDs; legacy binary-probability validation remains a separate command. TestFlow exports its eight synthetic cases with all 11 fields and protects spreadsheet consumers from formula injection.
 
-If Python results feed a browser app, define a small JSON/file contract first. Add a backend only when the task requires one. Application hosting, secrets, and model-provider credentials are not configured until needed.
+C1 predictions do not feed TestFlow. The app demonstrates permission governance independently of classifier performance.
 
 ## Reproducibility
 
@@ -51,8 +71,8 @@ Each experiment should record the Git commit, data source/version, split strateg
 
 Bootstrap -> dependency smoke check -> lint/format -> unit/CLI tests -> repository hygiene -> review -> CI -> merge. CI covers Windows/Linux on Python 3.11/3.12 and uses pinned action revisions. It verifies source, not performance on missing competition data.
 
-Keep reusable source in this layout. Build each required final deliverable into `outputs/` first. If the organisers require a tracked submission directory or public assets, create that exact directory after checking the official contract and sharing rules; do not submit `apps/` or the repository root by assumption.
+Deliver C1 through Kaggle. Deliver C2 through this public repository, its concise README and the actual MP4 in `demo/`, followed by the official form. A script or successful build does not replace the recording or submission receipt. Follow the [submission checklist](submission-checklist.md).
 
 ## Current limits
 
-Official 2026 tasks and data are not available here. No competition model, game, API service, deployment, or final submission exists yet. GitHub access, protected branches, and contest enrollment are separate from local setup.
+Real Tide activation and cryptographic approvals remain unverified. Official Plan C permits the clearly labelled simulation with equal judging treatment. Activity is an ordinary application log, not tamper-proof evidence; there is no Jira connection, end-to-end encryption or malicious-host protection claim. Demo state is intentionally temporary and supports one local server process.
