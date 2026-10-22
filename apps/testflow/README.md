@@ -60,4 +60,4 @@ Eight synthetic cases belong to `A3G9ST-DEMO`. CSV exports all 11 fields, preser
 
 Original template: [`@tidecloak/create-nextjs`](https://github.com/tide-foundation/tidecloak-js/tree/main/packages/tidecloak-create-nextjs), version 0.14.33; SDK 0.14.40. Preserve Tide's [licence notices](https://tide.org/licenses_tcoc2-0-0-en).
 
-Deliver source, the five-prompt overview and a real two-minute MP4 under 100 MB inside the repository. Follow the [submission checklist](../../docs/submission-checklist.md); video and form completion must be verified separately.
+The competition package contains source, the project overview and a two-minute MP4 under 100 MB inside the repository.

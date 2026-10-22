@@ -71,7 +71,7 @@ Each experiment should record the Git commit, data source/version, split strateg
 
 Bootstrap -> dependency smoke check -> lint/format -> unit/CLI tests -> repository hygiene -> review -> CI -> merge. CI covers Windows/Linux on Python 3.11/3.12 and uses pinned action revisions. It verifies source, not performance on missing competition data.
 
-Deliver C1 through Kaggle. Deliver C2 through this public repository, its concise README and the actual MP4 in `demo/`, followed by the official form. A script or successful build does not replace the recording or submission receipt. Follow the [submission checklist](submission-checklist.md).
+C1 is delivered through Kaggle. The C2 package contains this repository's source, project overview and MP4 in `demo/`; the repository URL is submitted through the official form.
 
 ## Current limits
 

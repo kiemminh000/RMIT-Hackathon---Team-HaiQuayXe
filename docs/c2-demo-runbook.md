@@ -1,10 +1,10 @@
-# TestFlow: two-minute Plan C demo and delivery runbook
+# TestFlow: two-minute demo walkthrough
 
 Use the working simulation at **http://127.0.0.1:3030/demo**. [Official Plan C](https://tide.org/unlocked/#plan-c) permits this route with equal judging treatment. Keep the simulation banner visible and explain it at the start. Live Tide activation is not a prerequisite for recording or submission.
 
 ## Prepare once
 
-1. On this computer, the app is already running: open **http://127.0.0.1:3030/demo**. Do not start a second server. On a fresh checkout, use Node.js 24 and run `npm ci`, then `npm run demo` from `apps/testflow`.
+1. Use Node.js 24 and run `npm ci`, then `npm run demo` from `apps/testflow`. If the app is already running, open **http://127.0.0.1:3030/demo** without starting another server.
 2. Open `/demo`. Select **Reset rehearsal**, then **Reset demo data**. Start from no identity, no requests and no grants.
 3. Pick a narrator and a screen operator. A third teammate watches timing and readable text; a fourth records and checks the final file. They do not need to enrol real Tide identities for this simulation.
 4. Rehearse the exact clicks below once. One operator switches all demo identities; never describe these as independent real approvals.
@@ -20,7 +20,7 @@ Use the working simulation at **http://127.0.0.1:3030/demo**. [Official Plan C](
 | 0:48–1:05 | In **Review as**, choose **Steward A**. Click **Approve request**. Show 1/2, **Another steward needed**, and **Already approved**. | “Steward A approves. One approval is insufficient, and repeating it cannot count twice. The request stays pending, so the tester still cannot edit.” |
 | 1:05–1:24 | In **Review as**, choose **Steward B**. Click **Approve request**. Show 2/2 and **Demo grant complete**. Click **Return to Tester**. | “Steward B supplies the second distinct demo approval. The server grants only editing. These identities are selectable simulations; no real Tide signature is being created.” |
 | 1:24–1:42 | Scroll to TF-003. Change the **Demo severity for TF-003** dropdown from medium to high. Show success; **Export all fields** remains locked. | “Back as the tester, I can now change this case's severity. The server checks the capability. Export is still locked because editing never grants the separate report permission.” |
-| 1:42–2:00 | Show Rehearsal activity, then the workspace/team name. | “In the intended live system, Tide's signed policy protects who can issue these grants. We used Tide's MCP to plan that integration. This simulation shows the workflow: shared approval, one useful permission, and a team that can keep moving.” |
+| 1:42–2:00 | Click **Activity** (the clock icon in the left sidebar) to show Rehearsal activity. Press **Ctrl+Home** to return to the TestFlow title and team name. | “In the intended live system, Tide's signed policy protects who can issue these grants. We used Tide's MCP to plan that integration. This simulation shows the workflow: shared approval, one useful permission, and a team that can keep moving.” |
 
 Suggested reason: **“I need to update test-case severity for our course report. I do not need export access.”** The dropdown's accessible label is **Demo severity for TF-003**; the visible current value is **medium** before the edit. Allow each successful response to finish before the next click.
 
@@ -34,19 +34,9 @@ The main recording intentionally ends with export locked, proving separate capab
 4. Open the downloaded CSV. Confirm 8 synthetic cases and all 11 fields, including multiline steps and the updated severity.
 5. Reset the rehearsal before recording the main story so its initial locked state is genuine.
 
-## Verify before pressing Record
+## What the demonstration establishes
 
-- [ ] The page shows **Plan C simulation** and the correct team/project.
-- [ ] The clean tester cannot edit or export.
-- [ ] Saving the editing request shows 0/2 and grants nothing.
-- [ ] One approval shows 1/2; the same steward cannot approve again.
-- [ ] The second distinct steward completes the grant; returning to Tester enables severity editing only.
-- [ ] TF-003 changes successfully and remains changed after reloading the page.
-- [ ] Export remains locked after the editing grant; its separate approval flow yields a valid CSV.
-- [ ] Narration describes selectable identities and intended Tide integration accurately.
-- [ ] No credentials, enrollment links, recovery information or personal records appear.
-
-This checklist is for the actual rehearsal; leave boxes open until observed. The [Plan C integration map](c2-plan-c.md) supplies the technical explanation. Two-of-three is our chosen demo policy. Real Tide thresholds follow signed policy; the recording does not claim real cryptographic enforcement or malicious-host protection.
+The sequence demonstrates locked access, two distinct approvals, a persistent severity change and separate export permission. The [integration map](c2-plan-c.md) explains the intended live system. Two-of-three is our chosen demo policy; real Tide thresholds follow signed policy. Selectable demo identities do not establish real cryptographic enforcement or protection against a malicious host.
 
 ## Save and submit
 
@@ -54,17 +44,7 @@ This checklist is for the actual rehearsal; leave boxes open until observed. The
 2. Watch the entire exported file. Confirm audible narration, readable states, truthful simulation labels, successful actions and no private information. Check duration and byte size. H.264 at 720p or 1080p around 15–30 MB is a practical target.
 3. Add the actual video link to the root README after the file exists. Push source, README and video; check anonymous access and playback.
 4. Submit the repository URL through the [official C2 form](https://forms.gle/HRHYjnqB86j1LFS97) with group **RMIT_SGS_HaiQuayXe_C2** and repository **https://github.com/kiemminh000/RMIT-Hackathon---Team-HaiQuayXe**.
-5. Save the form confirmation and submitted commit. Do not mark video or form complete before those artifacts exist.
-
-| Vietnam time, 22 October | Deliverable |
-|---|---|
-| Now | Finish one complete simulation rehearsal and timed take. |
-| By 16:40 | Save the recording; check narration, readable UI, duration and file size. |
-| By 16:50 | Publish the real MP4 and final README; verify public playback. |
-| By 17:00 | Submit C2 form and preserve confirmation. |
-| By 17:15 | Final C1 candidate selection and matching notebook check. |
-| Through 17:30 | Resolve delivery problems and verify receipts. |
-| 18:00 | Official deadline. |
+5. Save the form confirmation and submitted commit. The official deadline is **22 October 2026 at 18:00 Vietnam (UTC+7)**.
 
 ## Short answers for judges
 
@@ -75,5 +55,3 @@ This checklist is for the actual rehearsal; leave boxes open until observed. The
 **Are these real independent stewards?** No. The role selector deliberately simulates them for Plan C. Real identity enrollment and signatures belong to a future live verification.
 
 **Is this a Jira plugin?** No. Our course experience inspired a standalone prototype using synthetic records.
-
-**What remains to deliver?** The actual checked video, public package and confirmed submission form until each is complete.

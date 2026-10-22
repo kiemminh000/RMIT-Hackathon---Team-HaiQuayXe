@@ -29,7 +29,7 @@ Source: organiser brief, Kaggle description, Tide UNLOCKED description and submi
 - Submit the single repository URL through the organiser's Google Form using group name **`RMIT_SGS_HaiQuayXe_C2`**. Preserve the exact official form link; do not infer a link from an unclear photograph.
 - Plan C asks agents to use Tide's MCP for integration planning. TestFlow retrieved the governance scenario, RBAC playbook and current IGA canon; see the [integration map](c2-plan-c.md).
 - `apps/testflow/` contains the tested simulation and a separate retained live integration. Actual Tide activation and cryptographic approvals remain unverified; they no longer block Plan C delivery.
-- Required deliverables are the public repository, README and recorded demonstration submitted through the official form. See the [delivery checklist](submission-checklist.md).
+- Required deliverables are the public repository, README and recorded demonstration submitted through the official form.
 
 ## Data inspection
 
